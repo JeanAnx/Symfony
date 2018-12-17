@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{  parent() }}  Newtz - Newts and News{% endblock %}
+
+{% block body %}
+
+
+<div>
+    <a href="{{ path('home') }}">
+    <h1><i class="fas fa-bullhorn"></i> {{ 'Newtz' | upper }}</h1>
+    <h2>Newts and News</h2>
+    </a>
+</div>
+
+
+    <div>
+        <ul>
+            {% for row in array %}
+            <li> {{ row }} </li>
+            {% endfor %}
+        </ul>
+        
+    </div>
+
+{% endblock %}
