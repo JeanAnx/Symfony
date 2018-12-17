@@ -4,20 +4,23 @@
 
 {% block body %}
 
+<h1>Articles</h1>
 
-<div>
-    <h1>Create an article</h1>
+    <section class="newsFeed">
 
-    <div class="formCreate">
+    {% for article in articles %}
 
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create">
-        {{ form_end(form) }}
+    <article>
 
-    </div>
+        <h2>{{ article.title }}</h2>
 
-</div>
 
+        <p>({{ article.createdAt | date('d/m/Y')}}) {{ article.content }}</p>
+
+    </article>
+
+    {% endfor %}
+
+    </section>
 
 {% endblock %}

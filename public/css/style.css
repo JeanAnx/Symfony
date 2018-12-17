@@ -20,3 +20,15 @@ label {
 .formCreate {
     width: 20em;
 }
+
+/***************************************************************/
+
+
+.newsFeed {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.newsFeed > article {
+    width: 500px;
+}
