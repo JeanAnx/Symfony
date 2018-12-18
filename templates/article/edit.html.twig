@@ -6,13 +6,13 @@
 
 
 <div>
-    <h1>{{ 'article.create.h1' | trans }}</h1>
+    <h1>{{ 'article.edit.h1' | trans }}</h1>
 
-    <div class="formCreate">
+    <div class="formEdit">
 
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create">
+        <input class="buttonSubmit" type="submit" value="Edit">
         {{ form_end(form) }}
 
     </div>

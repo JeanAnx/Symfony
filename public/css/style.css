@@ -21,14 +21,75 @@ label {
     width: 20em;
 }
 
-/***************************************************************/
+.formEdit {
+    width: 800px;
+    margin: 0 auto;
+}
 
+.formEdit input , .formEdit textarea {
+    width: 100%;
+}
+
+.formEdit textarea {
+    height: 300px;
+}
+
+.formEdit .buttonSubmit {
+    display: block;
+    width: 3em;
+    margin: 1em auto;
+}
+
+.formEdit label {
+    text-align: center;
+    margin: 1em;
+}
+
+/***************************************************************/
 
 .newsFeed {
     display: flex;
     flex-flow: row wrap;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 .newsFeed > article {
     width: 500px;
+    padding: 1em;
+}
+
+.newsFeed h2 {
+    text-align: left;
+}
+
+.newsFeed p {
+    text-align: justify;
+}
+
+.showArticle {
+    width: 700px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.articleTools {
+    display: flex;
+}
+
+.articleTools input {
+    margin-left: 1em;
+    font-size: 1em;
+}
+
+.linkEdit , .linkDelete {
+    padding: .5em;
+    border: 1px solid grey;
+    border-radius: .5em;
+    background-color: gainsboro;
+}
+
+.linkEdit:hover , .articleTools input:hover {
+    background-color: white;
 }

@@ -41,6 +41,11 @@ class Article
      */
     private $status;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Author", inversedBy="articles")
+     */
+    private $author;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
@@ -109,6 +114,18 @@ class Article
     public function setStatus(bool $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Author
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Author $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

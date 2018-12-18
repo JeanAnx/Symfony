@@ -1,23 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello!{% endblock %}
+{% block title %}{{ 'article.index' | trans }}{% endblock %}
 
 {% block body %}
-
-<h1>Articles</h1>
 
     <section class="newsFeed">
 
     {% for article in articles %}
 
-    <article>
+        <article>
 
-        <h2>{{ article.title }}</h2>
+            <h2><a href="{{ path('show_article', {id: article.id}) }}">{{ article.title }}</a></h2>
 
+            <p>[{{ article.createdAt | date('d/m/Y')}}] {{ article.content }}</p>
 
-        <p>({{ article.createdAt | date('d/m/Y')}}) {{ article.content }}</p>
-
-    </article>
+        </article>
 
     {% endfor %}
 

@@ -1,0 +1,28 @@
+home:
+  index:
+    title: Newtz - Newts and News
+
+article:
+  index: Hello!
+  show:
+    body:
+      small: Publié le
+      small2: dernière mise à jour le
+  edit:
+    h1: Edit an article
+  create:
+    h1: Create an article
+
+author:
+  new:
+    title: New Author
+    h1: Create new Author
+    a: back to list
+  show:
+    title: Author
+    id: Id
+    name: name
+    job: job
+    birth: birth
+    back: back to list
+    edit: edit
