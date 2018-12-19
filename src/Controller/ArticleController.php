@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ArticleController extends AbstractController
 {
@@ -29,7 +30,11 @@ class ArticleController extends AbstractController
     /**
      * @Route("/admin/create", name="new_article" , methods={"GET" , "POST"})
      */
-    public function create(EntityManagerInterface $manager, Request $request)
+    public function create(
+        TranslatorInterface $translator ,
+        EntityManagerInterface $manager,
+        Request $request
+    )
     {
         $form = $this
             ->createForm(ArticleType::class, new Article());
@@ -41,6 +46,11 @@ class ArticleController extends AbstractController
 
             $manager->persist($article);
             $manager->flush();
+            $this->addFlash('success' ,
+                $translator->trans(
+                    'flash.success.article_created',
+                    ['%id' => $article->getId()]
+                    ));
 
             return $this->redirectToRoute('article');
         }

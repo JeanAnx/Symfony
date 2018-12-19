@@ -10,15 +10,32 @@
     </head>
     <header>
 
-        <div>
+        <div class="titleBlock">
             <a href="{{ path('article') }}">
                 <h1><i class="fas fa-bullhorn"></i> {{ 'Newtz' | upper }}</h1>
                 <h2>Newts and News</h2>
             </a>
         </div>
 
+        <nav>
+            <a href="{{ path('new_article') }}">Créer un article</a>
+            <a href="{{ path('author_index') }}">Auteurs</a>
+            <a href=""></a>
+        </nav>
+
     </header>
     <body>
+
+        {% for category, messages in app.flashes %}
+
+            {%  for message in messages  %}
+
+                <h2 class="flash--{{ category }}">{{ message }}</h2>
+
+            {% endfor %}
+
+        {%  endfor %}
+
         {% block body %}
         {% endblock %}
         {% block javascripts %}{% endblock %}

@@ -14,13 +14,12 @@ class AuthorType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('job' ,  ChoiceType::class, array(
-                'choices' => [
-                    'Editeur' => 'editor',
-                    'Contributor' => 'contributor',
-                    'Intern' => 'intern'
-                ]
-            ))
+            ->add('job' ,  ChoiceType::class, [
+                'choices' => Author::getJobChoices(),
+                'choice_label' => function ($choiceValue, $key, $value) {
+                    return "author.new.job_choices.$value";
+                },
+            ])
             ->add('birth' , null , [
                 'widget' => 'single_text',
             ])
@@ -31,6 +30,8 @@ class AuthorType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Author::class,
+            // Pour "traduire" les Labels du Form, on utilise cette ligne dans les params par défaut
+            'label_format' => 'author.new.%name%',
         ]);
     }
 }

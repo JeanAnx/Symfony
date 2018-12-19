@@ -12,12 +12,24 @@ article:
     h1: Edit an article
   create:
     h1: Create an article
+    title: Titre
+    content: Texte
+    status: Publié
+    author: Auteur
 
 author:
   new:
     title: New Author
     h1: Create new Author
     a: back to list
+    name: Blase
+    job: Fonction
+    job_choices:
+      editor: Éditeur
+      contributor: Contributeur
+      intern: Stagiaire
+    birth: Date de naissance
+
   show:
     title: Author
     id: Id
@@ -26,3 +38,7 @@ author:
     birth: birth
     back: back to list
     edit: edit
+
+flash:
+  success:
+    article_created: Woosh ! Your article was sent ( id %id )!
