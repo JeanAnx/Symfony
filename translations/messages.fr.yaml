@@ -42,3 +42,8 @@ author:
 flash:
   success:
     article_created: Woosh ! Your article was sent ( id %id )!
+
+congrats:
+  moderate: Pas mal %name% ! J'aurais pas fait comme ça mais c'est pas mal !
+  extra: Bravo %name%, t'es mon champion ! Change pas t'es génial !
+  crazy: OHLALALALAAAAAAAA, mais tu es fabuleux %name% !

@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use App\Repository\AuthorRepository;
+use App\Utils\Congratulator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -17,13 +19,17 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article", name="article")
      */
-    public function index(ArticleRepository $repository)
+    public function index(ArticleRepository $repository , AuthorRepository $authorRepository , TranslatorInterface $translator)
     {
         $articles = $repository->findLatest(10);
 
+        $message = new Congratulator($authorRepository , $translator);
+
+        dump($message->thank());
+
         return $this->render('article/index.html.twig', [
             'controller_name' => 'ArticleController',
-            'articles' => $articles
+            'articles' => $articles,
         ]);
     }
 
