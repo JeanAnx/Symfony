@@ -13,28 +13,29 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class ArticleController extends AbstractController
 {
     /**
      * @Route("/article", name="article")
      */
-    public function index(ArticleRepository $repository , AuthorRepository $authorRepository , TranslatorInterface $translator)
+    public function index(ArticleRepository $repository ,
+                          Congratulator $congrat)
     {
         $articles = $repository->findLatest(10);
 
-        $message = new Congratulator($authorRepository , $translator);
-
-        dump($message->thank());
 
         return $this->render('article/index.html.twig', [
             'controller_name' => 'ArticleController',
             'articles' => $articles,
+            'message' => $congrat->thank()
         ]);
     }
 
     /**
      * @Route("/admin/create", name="new_article" , methods={"GET" , "POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function create(
         TranslatorInterface $translator ,

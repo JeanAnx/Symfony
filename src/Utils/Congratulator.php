@@ -3,13 +3,13 @@
 namespace App\Utils;
 
 use App\Repository\AuthorRepository;
-use phpDocumentor\Reflection\Types\Self_;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class Congratulator
 {
     private $message;
-    private $author;
+    private $theAuthor;
+    private $authors;
 
     private $authorRepository;
     private $translator;
@@ -18,25 +18,26 @@ class Congratulator
         'moderate',
         'extra',
         'crazy',
+        'damn_girl',
+        'meh'
     ];
 
-    public function __construct(AuthorRepository $authorRepository , TranslatorInterface $translator)
+    public function __construct(AuthorRepository $authorRepository ,
+                                TranslatorInterface $translator)
     {
         $this->authorRepository = $authorRepository;
         $this->translator = $translator;
+        $this->message = self::CONGRATS[array_rand(self::CONGRATS)];
+        $this->authors = $this->authorRepository->findAll();
+        $this->theAuthor = $this->authors[array_rand($this->authors)]->getName();
+
     }
 
     public function thank()
     {
 
-        $message = self::CONGRATS[array_rand(self::CONGRATS)];
-
-        $authors = $this->authorRepository->findAll();
-
-        $theAuthor = $authors[array_rand($authors)]->getName();
-
-        return $this->translator->trans("congrats.$message" , [
-            '%name%' => $theAuthor,
+        return $this->translator->trans("congrats.$this->message" , [
+            '%name%' => $this->theAuthor,
         ]);
 
     }

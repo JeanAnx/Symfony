@@ -4,6 +4,8 @@
 
 {% block body %}
 
+    <h2 class="message">{{ message }}</h2>
+
     <section class="newsFeed">
 
     {% for article in articles %}
@@ -12,7 +14,7 @@
 
             <h2><a href="{{ path('show_article', {id: article.id}) }}">{{ article.title }}</a></h2>
 
-            <p>[{{ article.createdAt | date('d/m/Y')}}] {{ article.content }}</p>
+            <p>[{{ article.createdAt | date('d/m/Y')}}] {{ article.content | slice(0,400) }} ... </p>
 
         </article>
 

@@ -20,7 +20,17 @@
         <nav>
             <a href="{{ path('new_article') }}">Créer un article</a>
             <a href="{{ path('author_index') }}">Auteurs</a>
-            <a href=""></a>
+            <a href="{{ path('user_index') }}">Utilisateurs</a>
+            {%  if is_granted('ROLE_USER') %}
+            <a href="{{ path('logout') }}">Se déconnecter</a>
+
+            {%  else %}
+
+            <a href="{{ path('app_login') }}">Se connecter</a>
+
+            {%  endif %}
+
+
         </nav>
 
     </header>

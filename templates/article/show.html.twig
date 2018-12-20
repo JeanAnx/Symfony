@@ -17,12 +17,13 @@
         </article>
 
          <div class="articleTools">
-
+             {%  if is_granted('ROLE_ADMIN') %}
             <a class="linkEdit" href="{{ path('edit_article' , { id: article.id }) }}"><i class="fas fa-pencil-alt"></i> Edit</a>
-
              {{ form_start(delete_form) }}
              <input class="linkDelete" type="submit" value="Delete">
              {{ form_end(delete_form) }}
+             {%  endif %}
+
 
          </div>
 

@@ -12,7 +12,7 @@ h1 , h2 , h3 , h4 {
 }
 
 nav {
-    width: 30%;
+    width: 50%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -22,7 +22,9 @@ nav a {
     margin: 0 1em;
 }
 
-
+.message {
+    color: orange;
+}
 /**************************************************************/
 /******************* FORM *************************************/
 label {
@@ -104,4 +106,16 @@ label {
 
 .linkEdit:hover , .articleTools input:hover {
     background-color: white;
+}
+
+/**************************** USER TABLE **********************************/
+
+.userTable , .authorTable {
+    text-align: left;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.userTable tbody tr , .authorTable tbody tr {
+    border-bottom: 2px solid gainsboro;
 }

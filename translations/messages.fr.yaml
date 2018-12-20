@@ -47,3 +47,14 @@ congrats:
   moderate: Pas mal %name% ! J'aurais pas fait comme ça mais c'est pas mal !
   extra: Bravo %name%, t'es mon champion ! Change pas t'es génial !
   crazy: OHLALALALAAAAAAAA, mais tu es fabuleux %name% !
+  damn_girl: Way to go %name% !
+  meh: C'est un peu mieux que d'habitude, %name%, mais va falloir faire mieux...
+
+user:
+  entity:
+    role_choices:
+        ROLE_USER : Utilisateur
+        ROLE_ADMIN : Administrateur
+        ROLE_CONTRIBUTOR : Contributeur
+        ROLE_INTERN: Stagiaire
+        ROLE_READER: Lecteur
