@@ -8,7 +8,7 @@ use App\Entity\User;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\AuthorRepository;
-use App\Utils\Congratulator;
+use App\Twig\AppExtension;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -22,16 +22,13 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article", name="article")
      */
-    public function index(ArticleRepository $repository ,
-                          Congratulator $congrat)
+    public function index(ArticleRepository $repository)
     {
         $articles = $repository->findLatest(10);
-
 
         return $this->render('article/index.html.twig', [
             'controller_name' => 'ArticleController',
             'articles' => $articles,
-            'message' => $congrat->thank()
         ]);
     }
 
@@ -40,7 +37,7 @@ class ArticleController extends AbstractController
      * @IsGranted("ROLE_ADMIN")
      */
     public function create(
-        TranslatorInterface $translator ,
+        TranslatorInterface $translator,
         EntityManagerInterface $manager,
         Request $request
     )

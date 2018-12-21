@@ -1,0 +1,13 @@
+{%  extends 'form_div_layout.html.twig' %}
+
+{%  block text_widget %}
+<input
+        type="text"
+        name="{{ form.vars.full_name }}"
+        id="{{ form.vars.id }}"
+        value="{{ form.vars.value }}"
+        class="form-control form-group-lg"
+/>
+
+    {{ dump(form) }}
+{% endblock %}
