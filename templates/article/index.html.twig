@@ -14,6 +14,8 @@
 
             <h2><a href="{{ path('show_article', {id: article.id}) }}">{{ article.title }}</a></h2>
 
+            <small>Par {{ article.author.getName() }}</small>
+
             <p>[{{ article.createdAt | date('d/m/Y')}}] {{ article.content | slice(0,400) }} ... </p>
 
         </article>

@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Author;
+use App\Entity\User;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\AuthorRepository;
@@ -88,6 +90,7 @@ class ArticleController extends AbstractController
      */
     public function edit(Article $article, Request $request, EntityManagerInterface $manager)
     {
+
         $form = $this->createForm(ArticleType::class, $article , ['method' => 'PUT']);
 
         $form->handleRequest($request);
@@ -112,6 +115,9 @@ class ArticleController extends AbstractController
 
     public function delete(Article $article , EntityManagerInterface $manager)
     {
+
+        $this->denyAccessUnlessGranted('ARTICLE_DELETE' , $article->getAuthor());
+
         $manager->remove($article);
         $manager->flush();
 

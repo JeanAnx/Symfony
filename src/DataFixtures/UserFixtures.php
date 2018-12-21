@@ -25,6 +25,7 @@ class UserFixtures extends Fixture
             ->setPassword($this->encoder->encodePassword($u1,'marcel'));
 
         $manager->persist($u1);
+        $this->addReference('user_marcel',$u1);
 
         $u2 = new User();
         $u2
@@ -32,6 +33,7 @@ class UserFixtures extends Fixture
             ->setPassword($this->encoder->encodePassword($u1,'roger'));
 
         $manager->persist($u2);
+        $this->addReference('user_roger',$u2);
 
         $manager->flush();
     }

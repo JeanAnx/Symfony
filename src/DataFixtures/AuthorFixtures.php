@@ -2,11 +2,12 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Author;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Proxies\__CG__\App\Entity\Author;
 
-class AuthorFixtures extends Fixture
+class AuthorFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -19,6 +20,7 @@ class AuthorFixtures extends Fixture
             ->setName('Roger Hanin')
             ->setJob('intern')
             ->setBirth(new \DateTime('1921-03-03'))
+            ->setUser($this->getReference('user_roger'))
             ;
 
         $author2 = new Author();
@@ -27,6 +29,8 @@ class AuthorFixtures extends Fixture
             ->setName('Marcel Cerdan')
             ->setJob('editor')
             ->setBirth(new \DateTime('1902-12-02'))
+            ->setUser($this->getReference('user_marcel'))
+
         ;
 
         $manager->persist($author1);
@@ -36,6 +40,12 @@ class AuthorFixtures extends Fixture
         $this->addReference('author-marcel',$author2);
 
         $manager->flush();
+
+    }
+
+    public function getDependencies()
+    {
+        return [UserFixtures::class];
     }
 
 
